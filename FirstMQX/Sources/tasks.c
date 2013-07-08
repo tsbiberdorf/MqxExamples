@@ -1,0 +1,127 @@
+/*
+ * tasks.c
+ *
+ *  Created on: Jul 8, 2013
+ *      Author: tsbiberdorf
+ */
+
+#include <mqx.h>
+#include <bsp.h>
+#include "ioDriver.h"
+
+/* Task IDs */
+#define INIT_TASK 5
+#define LED1_TASK 6
+#define LED2_TASK 7
+#define LED3_TASK 8
+#define LED4_TASK 9
+void led1_task(uint_32);
+void led2_task(uint_32);
+void led3_task(uint_32);
+void led4_task(uint_32);
+//extern boolean InitializeIO(void);
+extern void SetOutput(int signal,boolean state);
+
+void init_task(uint_32 initial_data)
+{
+	_task_id task_id;
+	
+	printf("\n Initialize IO \n");
+	InitializeIO();
+
+	task_id = _task_create(0, LED1_TASK, 0);
+	if (task_id == MQX_NULL_TASK_ID)
+	{
+		printf("\n Could not create LED1_TASK\n");
+	}
+	else
+	{
+		printf("\n LED1_TASK created \n");
+	}
+
+	task_id = _task_create(0, LED2_TASK, 0);
+	if (task_id == MQX_NULL_TASK_ID)
+	{
+		printf("\n Could not create LED1_TASK\n");
+	}
+	else
+	{
+		printf("\n LED1_TASK created \n");
+	}
+
+	task_id = _task_create(0, LED3_TASK, 0);
+	if (task_id == MQX_NULL_TASK_ID)
+	{
+		printf("\n Could not create LED1_TASK\n");
+	}
+	else
+	{
+		printf("\n LED1_TASK created \n");
+	}
+
+	task_id = _task_create(0, LED4_TASK, 0);
+	if (task_id == MQX_NULL_TASK_ID)
+	{
+		printf("\n Could not create LED1_TASK\n");
+	}
+	else
+	{
+		printf("\n LED1_TASK created \n");
+	}
+}
+
+/*TASK*-----------------------------------------------------
+ *
+ * Task Name : led1_task
+ * Comments :
+ * This task toggles the LED1 every 1111 milliseconds
+ *
+ *END*-----------------------------------------------------*/
+void led1_task(uint_32 initial_data)
+{
+	int value = 0;
+	printf("\n led1 task \n");
+	while (TRUE)
+	{
+		_time_delay(1111);
+		SetOutput(1,value);
+		value = value^1;
+	}
+}
+
+void led2_task(uint_32 initial_data)
+{
+	int value = 0;
+	printf("\n led2 task \n");
+	while (TRUE)
+	{
+		_time_delay(2222);
+		SetOutput(2,value);
+		value = value^1;
+	}
+}
+
+void led3_task(uint_32 initial_data)
+{
+	int value = 0;
+	printf("\n led3 task \n");
+	while (TRUE)
+	{
+		_time_delay(3333);
+		SetOutput(3,value);
+		value = value^1;
+	}
+}
+
+
+void led4_task(uint_32 initial_data)
+{
+	int value = 0;
+	printf("\n led4 task \n");
+	while (TRUE)
+	{
+		_time_delay(4444);
+		SetOutput(4,value);
+		value = value^1;
+	}
+}
