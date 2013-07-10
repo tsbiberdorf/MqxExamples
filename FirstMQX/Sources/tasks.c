@@ -15,59 +15,73 @@
 #define LED2_TASK 7
 #define LED3_TASK 8
 #define LED4_TASK 9
+#define RTC_TASK 10
+
 void led1_task(uint_32);
 void led2_task(uint_32);
 void led3_task(uint_32);
 void led4_task(uint_32);
+void rtc_task(uint_32);
+
 //extern boolean InitializeIO(void);
 extern void SetOutput(int signal,boolean state);
 
 void init_task(uint_32 initial_data)
 {
-	_task_id task_id;
-	
-	printf("\n Initialize IO \n");
-	InitializeIO();
+  _task_id task_id;
 
-	task_id = _task_create(0, LED1_TASK, 0);
-	if (task_id == MQX_NULL_TASK_ID)
-	{
-		printf("\n Could not create LED1_TASK\n");
-	}
-	else
-	{
-		printf("\n LED1_TASK created \n");
-	}
+  printf("\n Initialize IO \n");
+  InitializeIO();
 
-	task_id = _task_create(0, LED2_TASK, 0);
-	if (task_id == MQX_NULL_TASK_ID)
-	{
-		printf("\n Could not create LED1_TASK\n");
-	}
-	else
-	{
-		printf("\n LED1_TASK created \n");
-	}
+  task_id = _task_create(0, LED1_TASK, 0);
+  if (task_id == MQX_NULL_TASK_ID)
+    {
+      printf("\n Could not create LED1_TASK\n");
+    }
+  else
+    {
+      printf("\n LED1_TASK created \n");
+    }
 
-	task_id = _task_create(0, LED3_TASK, 0);
-	if (task_id == MQX_NULL_TASK_ID)
-	{
-		printf("\n Could not create LED1_TASK\n");
-	}
-	else
-	{
-		printf("\n LED1_TASK created \n");
-	}
+  task_id = _task_create(0, LED2_TASK, 0);
+  if (task_id == MQX_NULL_TASK_ID)
+    {
+      printf("\n Could not create LED2_TASK\n");
+    }
+  else
+    {
+      printf("\n LED2_TASK created \n");
+    }
 
-	task_id = _task_create(0, LED4_TASK, 0);
-	if (task_id == MQX_NULL_TASK_ID)
-	{
-		printf("\n Could not create LED1_TASK\n");
-	}
-	else
-	{
-		printf("\n LED1_TASK created \n");
-	}
+  task_id = _task_create(0, LED3_TASK, 0);
+  if (task_id == MQX_NULL_TASK_ID)
+    {
+      printf("\n Could not create LED3_TASK\n");
+    }
+  else
+    {
+      printf("\n LED3_TASK created \n");
+    }
+
+  task_id = _task_create(0, LED4_TASK, 0);
+  if (task_id == MQX_NULL_TASK_ID)
+    {
+      printf("\n Could not create LED4_TASK\n");
+    }
+  else
+    {
+      printf("\n LED4_TASK created \n");
+    }
+  
+  task_id = task_create(0,RTC_TASK,0);
+  if (task_id == MQX_NULL_TASK_ID)
+    {
+      printf("\n Could not create RTC_TASK\n");
+    }
+  else
+    {
+      printf("\n RTC_TASK created \n");
+    }
 }
 
 /*TASK*-----------------------------------------------------
@@ -79,49 +93,55 @@ void init_task(uint_32 initial_data)
  *END*-----------------------------------------------------*/
 void led1_task(uint_32 initial_data)
 {
-	int value = 0;
-	printf("\n led1 task \n");
-	while (TRUE)
-	{
-		_time_delay(1111);
-		SetOutput(1,value);
-		value = value^1;
-	}
+  int value = 0;
+  printf("\n led1 task \n");
+  while (TRUE)
+    {
+      _time_delay(1111);
+      SetOutput(1,value);
+      value = value^1;
+    }
 }
 
 void led2_task(uint_32 initial_data)
 {
-	int value = 0;
-	printf("\n led2 task \n");
-	while (TRUE)
-	{
-		_time_delay(2222);
-		SetOutput(2,value);
-		value = value^1;
-	}
+  int value = 0;
+  printf("\n led2 task \n");
+  while (TRUE)
+    {
+      _time_delay(2222);
+      SetOutput(2,value);
+      value = value^1;
+    }
 }
 
 void led3_task(uint_32 initial_data)
 {
-	int value = 0;
-	printf("\n led3 task \n");
-	while (TRUE)
-	{
-		_time_delay(3333);
-		SetOutput(3,value);
-		value = value^1;
-	}
+  int value = 0;
+  printf("\n led3 task \n");
+  while (TRUE)
+    {
+      _time_delay(3333);
+      SetOutput(3,value);
+      value = value^1;
+    }
 }
 
 
 void led4_task(uint_32 initial_data)
 {
-	int value = 0;
-	printf("\n led4 task \n");
-	while (TRUE)
-	{
-		_time_delay(4444);
-		SetOutput(4,value);
-		value = value^1;
-	}
+  int value = 0;
+  printf("\n led4 task \n");
+  while (TRUE)
+    {
+      _time_delay(4444);
+      SetOutput(4,value);
+      value = value^1;
+    }
+}
+
+void rtc_task(uint_32 initial_data)
+{
+  printf("\n rtc_task  \n");
+
 }

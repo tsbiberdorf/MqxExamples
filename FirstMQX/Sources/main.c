@@ -24,6 +24,7 @@ TASK_TEMPLATE_STRUCT MQX_template_list[] =
 {LED2_TASK, led2_task, 1500, 11, "led2", 0, 0, 0},
 {LED3_TASK, led3_task, 1500, 12, "led3", 0, 0, 0},
 {LED4_TASK, led4_task, 1500, 13, "led4", 0, 0, 0},
+{RTC_TASK,  rtc_task,  1500, 14, "rtc", 0, 0, 0},
 {0, 0, 0, 0, 0, 0, 0, 0}
 };
 

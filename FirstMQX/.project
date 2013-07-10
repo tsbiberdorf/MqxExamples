@@ -69,8 +69,12 @@
 	</natures>
 	<variableList>
 		<variable>
+			<name>CW_ROOT_DIR</name>
+			<value>file:/D:/Freescale/CW%20MCU%20v10.4/MCU</value>
+		</variable>
+		<variable>
 			<name>MQX_ROOT_DIR</name>
-			<value>file:/d:/projects/Freescale/Freescale_MQX_4_0/</value>
+			<value>file:/d:/projects/Freescale/Freescale_MQX_4_0</value>
 		</variable>
 	</variableList>
 </projectDescription>
