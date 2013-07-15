@@ -8,17 +8,10 @@
 #include <mqx.h>
 #include <bsp.h>
 #include "ioDriver.h"
+#include "tasks.h"
 
 /* Task IDs */
-#define INIT_TASK 5
-#define LED1_TASK 6
-#define LED2_TASK 7
-#define LED3_TASK 8
-#define LED4_TASK 9
-void led1_task(uint_32);
-void led2_task(uint_32);
-void led3_task(uint_32);
-void led4_task(uint_32);
+
 //extern boolean InitializeIO(void);
 extern void SetOutput(int signal,boolean state);
 
@@ -124,4 +117,9 @@ void led4_task(uint_32 initial_data)
 		SetOutput(4,value);
 		value = value^1;
 	}
+}
+
+void timer_task(uint_32 initial_data)
+{
+	
 }

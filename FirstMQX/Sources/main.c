@@ -6,6 +6,7 @@
 #include <mqx.h>
 #include <bsp.h>
 #include "main.h"
+#include "tasks.h"
 
 #if !BSPCFG_ENABLE_IO_SUBSYSTEM
 #error This application requires BSPCFG_ENABLE_IO_SUBSYSTEM defined non-zero in
@@ -24,6 +25,7 @@ TASK_TEMPLATE_STRUCT MQX_template_list[] =
 {LED2_TASK, led2_task, 1500, 11, "led2", 0, 0, 0},
 {LED3_TASK, led3_task, 1500, 12, "led3", 0, 0, 0},
 {LED4_TASK, led4_task, 1500, 13, "led4", 0, 0, 0},
+{TIMER_TASK, timer_task, 1500, 13, "timer1sec", 0, 0, 0},
 {0, 0, 0, 0, 0, 0, 0, 0}
 };
 
