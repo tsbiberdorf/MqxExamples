@@ -8,17 +8,9 @@
 #include <mqx.h>
 #include <bsp.h>
 #include "ioDriver.h"
+#include "tasks.h"
+#include "rtcTask.h"
 
-/* Task IDs */
-#define INIT_TASK 5
-#define LED1_TASK 6
-#define LED2_TASK 7
-#define LED3_TASK 8
-#define LED4_TASK 9
-void led1_task(uint_32);
-void led2_task(uint_32);
-void led3_task(uint_32);
-void led4_task(uint_32);
 //extern boolean InitializeIO(void);
 extern void SetOutput(int signal,boolean state);
 
@@ -42,31 +34,41 @@ void init_task(uint_32 initial_data)
 	task_id = _task_create(0, LED2_TASK, 0);
 	if (task_id == MQX_NULL_TASK_ID)
 	{
-		printf("\n Could not create LED1_TASK\n");
+		printf("\n Could not create LED2_TASK\n");
 	}
 	else
 	{
-		printf("\n LED1_TASK created \n");
+		printf("\n LED2_TASK created \n");
 	}
 
 	task_id = _task_create(0, LED3_TASK, 0);
 	if (task_id == MQX_NULL_TASK_ID)
 	{
-		printf("\n Could not create LED1_TASK\n");
+		printf("\n Could not create LED3_TASK\n");
 	}
 	else
 	{
-		printf("\n LED1_TASK created \n");
+		printf("\n LED3_TASK created \n");
 	}
 
 	task_id = _task_create(0, LED4_TASK, 0);
 	if (task_id == MQX_NULL_TASK_ID)
 	{
-		printf("\n Could not create LED1_TASK\n");
+		printf("\n Could not create LED4_TASK\n");
 	}
 	else
 	{
-		printf("\n LED1_TASK created \n");
+		printf("\n LED4_TASK created \n");
+	}
+
+	task_id = _task_create(0, RTC_TASK, 0);
+	if (task_id == MQX_NULL_TASK_ID)
+	{
+		printf("\n Could not create RTC_TASK\n");
+	}
+	else
+	{
+		printf("\n RTC_TASK created \n");
 	}
 }
 
@@ -124,4 +126,12 @@ void led4_task(uint_32 initial_data)
 		SetOutput(4,value);
 		value = value^1;
 	}
+}
+
+
+void rtc_task(uint_32 initial_data)
+{
+	int value = 0;
+	printf("\n rtc task \n");
+	rtcTask();
 }
